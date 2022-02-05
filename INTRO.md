@@ -1,4 +1,4 @@
-![My Image](https://drive.google.com/file/d/1EuNn3L5PbbkQixNLEMgJeiJwGXfQzqzI/view?usp=sharing)
+![My Image](Image.JPG)
 
 Hello Professor! I am Shivangi Kakkar. I completed my undergrad from India, majoring in Computer Science. I started with Web Development in my junior year by taking an udemy course on React. I coded some standard projects like creating a simple [burger builder app](https://my-burger-e14c1.firebaseapp.com/) and a clone of [Amazon.com](https://clone-461ef.web.app/) by following a youtube tutorial.
 
