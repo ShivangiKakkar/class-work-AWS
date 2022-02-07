@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment</title>
+</head>
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: rgb(220, 250, 230);
+    }
+    .navbar {
+        display: flex;
+        background: rgb(39, 156, 64);
+        height: 48px;
+    }
+    .nav-item {
+        font-weight: bold;
+        padding: 16px;
+        width: 64px;
+        position: relative;
+    }
+
+    .nav-item label {
+        font-weight: 100;
+    }
+
+    .nav-item input {
+        display: none;
+    }
+
+    .menu-items {
+        width: 100%;
+        background: rgb(39, 196, 64);
+        top: 48px;
+        left: 0;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        visibility: hidden;
+        font-weight: normal;
+    }
+    .menu-item {
+        padding: 1rem;
+        text-decoration: none;
+        color: purple;
+    }
+    .menu-item:focus {
+        outline: none;
+    }
+    .menu-item:hover {
+        background: rgb(39, 255, 64);
+    }
+    .nav-item:hover {
+        background: rgb(39, 196, 64);
+        cursor: pointer;
+    }
+    .nav-item:hover .menu-items, #toggle:checked ~ .menu-items {
+        visibility: visible;
+    }
+    .container {
+        max-width: 1300px;
+        margin: 25px auto;
+    }
+    .banner {
+        padding: 8px 16px 16px;
+        background: white;
+        margin-bottom: 16px;
+    }
+    .banner.success {
+        border-left: 5px solid rgb(39, 196, 64);
+    }
+    .banner.warning {
+        border-left: 5px solid rgb(245, 245, 80);
+        margin-top: 25px;
+    }
+</style>
+<body>
+    <div class="navbar">
+        <div class="nav-item">
+            File
+            <div class="menu-items">
+                <a href="" class="menu-item">New</a>
+                <a href="" class="menu-item">Open</a>
+                <a href="" class="menu-item">Save</a>
+                <a href="" class="menu-item">Print</a>
+                <a href="" class="menu-item">Close</a>
+            </div>
+        </div>
+        <div class="nav-item">
+            <label for="toggle">Edit</label>
+            <input type="checkbox" id="toggle" />
+            <div class="menu-items">
+                <a href="" class="menu-item">Undo</a>
+                <a href="" class="menu-item">Redo</a>
+                <a href="" class="menu-item">Cut</a>
+                <a href="" class="menu-item">Copy</a>
+                <a href="" class="menu-item">Paste</a>
+                <a href="" class="menu-item">Delete</a>
+                <a href="" class="menu-item">Delete All</a>
+            </div>
+        </div>
+        <div class="nav-item">
+            View
+            <div class="menu-items">
+                <a href="" class="menu-item">Zoom In</a>
+                <a href="" class="menu-item">Zoom Out</a>
+                <a href="" class="menu-item">Actual Size</a>
+                <a href="" class="menu-item">Fit Page</a>
+                <a href="" class="menu-item">Fit Width</a>
+                <a href="" class="menu-item">Fit Height</a>
+                <a href="" class="menu-item">Rotate Left</a>
+                <a href="" class="menu-item">Rotate Right</a>
+                <a href="" class="menu-item">Full Screen</a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="banner success">
+            <h3>Instructions</h3>
+            <p>
+                Recreate this page using only CSS. Do yourself a favor and 1) Do not
+                view the source. Figure it out yourself. 2) Do not search for the
+                solution. Learn CSS until you know enough to do this.
+            </p>
+        </div>
+        <div class="banner warning">
+            <h3>Title</h3>
+            <p>
+                Notice how the Edit menu (besides for not being bold) reacts to clicks. If you click the edit menu, it remains open until you click somewhere else. (This you might need to search for)
+            </p>
+        </div>
+    </div>
+</body>
+</html>
