@@ -1,0 +1,12 @@
+{
+  "name": "to-do-list",
+  "version": "1.0.0",
+  "description": "-HTML\r -CSS\r -Bulma\r -Vue 3\r -NodeJS\r -Express\r -C1/CD",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShivangiKakkar/TO-DO-LIST1.git"
+  }
+}
