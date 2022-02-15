@@ -1,12 +1,12 @@
 {
-  "name": "to-do-list",
+  "name": "class-work",
   "version": "1.0.0",
-  "description": "-HTML\r -CSS\r -Bulma\r -Vue 3\r -NodeJS\r -Express\r -C1/CD",
+  "description": "### Implementing different concepts of full stack development.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ShivangiKakkar/TO-DO-LIST1.git"
+    "url": "git+https://github.com/ShivangiKakkar/class-work-AWS.git"
   }
 }
