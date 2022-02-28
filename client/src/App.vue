@@ -4,9 +4,14 @@ import Messages from './pages/Messages.vue';
 </script>
 
 <template>
+  
   <Nav />
-  <Messages />
-  <h1 class = "title">Praying Ukriane</h1>
+  <div class="container">
+    <section class="section">
+      <h1 class="title">Praying for Ukraine</h1>
+      <Messages />
+    </section>
+  </div>
 </template>
 
 <style>

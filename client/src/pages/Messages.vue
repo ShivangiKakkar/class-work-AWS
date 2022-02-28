@@ -1,8 +1,35 @@
 <script setup lang="ts">
+import { ref, reactive, onMounted } from 'vue';
 
+        const message=ref('Hello Vue!');
+        const currentTab=ref('All');
+        const promt= ref('Waiting for input...');
+        const notifications = reactive ( [
+          {type: 'primary', message: 'This is primary noti'},
+          {type: 'link', message: 'This is a link notification'},
+          {type: 'success', message: 'Yayy you did it!'},
+          {type: 'warning', message: 'Oee! Watch out!'},
+          {type: 'danger', message: 'I cant believe you just did that!'}
+        ]);
+
+    
+      function cardClick() {
+        message.value = 'You clicked me!';
+      }
+      function close(index: number) {
+        notifications.splice(index, 1);
+      }
+
+    onMounted(() => {
+      setInterval(() => {
+        prompt.value += '.';
+      }, 500);
+    });
 </script>
 
 <template>
+
+
     <div class="">
         <div class="columns">
             <div class="column is-one-quarter">
@@ -67,17 +94,12 @@
                   <br>
                   <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
                 </div>
+                  <div v-for=" (x, i) in notifications" :class="`notification is-${x.type}`">
+                  <button class="delete" @click="close(i)" ></button>
+                  {{ x.message }}
+                  </div>
               </div>
-            </div>
-          <div v-for=" (x, i) in notifications" :class="`notification is-${x.type}`">
-              <button class="delete" @click="close(i)" ></button>
-              {{ x.message }}
-          </div>
-          </div>
-
-            <!-- END -->
-               
-            <div class="column is-one-quarter">
+              <div class="column is-one-quarter">
                 
                 <article class="panel is-primary">
                     <p class="panel-heading">
@@ -124,8 +146,16 @@
                     </a>
                   </article>
             </div>
+            
+            </div>
+          
+          </div>
 </template>
 
 <style>
-
+  .card .delete {
+        position: absolute;
+        right: 0.5rem;
+        top: 0.5rem;
+      }
 </style>
