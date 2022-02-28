@@ -3,7 +3,7 @@ import { ref, reactive, onMounted } from 'vue';
 
         const message=ref('Hello Vue!');
         const currentTab=ref('All');
-        const promt= ref('Waiting for input...');
+        const prompt= ref('Waiting for input...');
         const notifications = reactive ( [
           {type: 'primary', message: 'This is primary noti'},
           {type: 'link', message: 'This is a link notification'},
