@@ -1,6 +1,8 @@
 
 # Created by https://www.toptal.com/developers/gitignore/api/node,vuejs,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=node,vuejs,visualstudiocode
+## mac
+.DS_Store
 
 ### Node ###
 # Logs

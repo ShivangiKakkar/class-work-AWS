@@ -30,7 +30,7 @@ import { ref, reactive, onMounted } from 'vue';
 <template>
 
 
-    <div class="">
+    <div class="section">
         <div class="columns">
             <div class="column is-one-quarter">
                 <aside class="menu">
@@ -77,14 +77,14 @@ import { ref, reactive, onMounted } from 'vue';
                 <div class="card" @click="cardClick">
                     <div class="class-image">
                       <figure class="image is-4by3">
-                        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                        <img src="https://images.unsplash.com/photo-1568990416308-c998af4cf9ee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3276&q=80" alt="Placeholder image">
                       </figure>
                     </div>
                 </div>
 
                 <div class="media-content">
-                  <p class="title is-4">John Smith</p>
-                  <p class="subtitle is-6">@johnsmith</p>
+                  <p class="title is-4">Shivangi Kakkar</p>
+                  <p class="subtitle is-6">@shivangikakkar</p>
                 </div>
                 <div class="content">
                   {{ message }} 
@@ -92,7 +92,7 @@ import { ref, reactive, onMounted } from 'vue';
                   <a>@bulmaio</a>.
                   <a href="#">#css</a> <a href="#">#responsive</a>
                   <br>
-                  <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                  <time datetime="2016-1-1">03:30 PM - 1 Mar 2022</time>
                 </div>
                   <div v-for=" (x, i) in notifications" :class="`notification is-${x.type}`">
                   <button class="delete" @click="close(i)" ></button>
