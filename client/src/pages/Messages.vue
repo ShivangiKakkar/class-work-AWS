@@ -77,7 +77,7 @@ import { ref, reactive, onMounted } from 'vue';
                 <div class="card" @click="cardClick">
                     <div class="class-image">
                       <figure class="image is-4by3">
-                        <img src="https://images.unsplash.com/photo-1568990416308-c998af4cf9ee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3276&q=80" alt="Placeholder image">
+                        <img src="https://images.unsplash.com/photo-1551373802-aec2b9a165aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80" alt="Placeholder image">
                       </figure>
                     </div>
                 </div>
