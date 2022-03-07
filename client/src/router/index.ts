@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory, RouteRecord, RouteRecordRaw } from "vue-router";
 
 import Home from '../pages/Home.vue';
-//import Messages from '../pages/Messages.vue';
 import Generic from '../pages/Generic.vue';
 import Login from '../pages/Login.vue';
 import session from '../models/session';
