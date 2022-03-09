@@ -32,9 +32,20 @@
 </template>
 
 <style scoped lang="scss">
-.avatar {
-    display: flex;
-    align-items: center;
-}
-
+    .avatar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: .5em;
+        gap: .5em;
+        line-height: 1em;
+        img {
+            width: 48px;
+            height: 48px;
+            max-height: max-content;
+            border-radius: 10%;
+            overflow: hidden;
+            object-fit: cover;
+        }
+    }
 </style>

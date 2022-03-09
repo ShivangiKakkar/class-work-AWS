@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, reactive, onMounted } from 'vue';
-import Messages from '../components/Messages.vue';
 
         const message=ref('Hello Vue!');
         const currentTab=ref('All');
@@ -95,7 +94,6 @@ import Messages from '../components/Messages.vue';
                   <br>
                   <time datetime="2016-1-1">03:30 PM - 1 Mar 2022</time>
                 </div>
-                  <Messages />
               </div>
               <div class="column is-one-quarter">
                 

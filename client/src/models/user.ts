@@ -24,7 +24,7 @@ export interface User{
     password: 'long table',
     email: 'vladimirputin.com',
     pic:'https://randomuser.me/api/portraits/men/8.jpg',
-    id: 1,
+    id: 2,
 },
 {
     firstname: 'Joe',
@@ -33,7 +33,7 @@ export interface User{
     password: 'birdsinging',
     email: 'joebiden.com',
     pic:'https://randomuser.me/api/portraits/men/76.jpg',
-    id: 1,
+    id: 3,
 },
 
 

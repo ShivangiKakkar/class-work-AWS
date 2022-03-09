@@ -2,8 +2,9 @@
 import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
 import LoginBadge from './LoginBadge.vue';
+import Messages from './Messages.vue';
 
-  const isOpen = ref(true);
+  const isOpen = ref(false);
 </script>
 
 <template>
@@ -59,6 +60,7 @@ import LoginBadge from './LoginBadge.vue';
             <div class="navbar-item">
               <login-badge />
             </div>
+            <messages />
 
 
             <div class="navbar-item">
