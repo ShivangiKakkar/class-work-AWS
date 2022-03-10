@@ -6,7 +6,7 @@ export const useMessages = defineStore('messages', {
   // other options...
   state: () => ({
     notifications:[
-        {type: 'primary', message: 'This is primary noti'},
+        {type: 'primary', message: 'This is primary notification'},
         {type: 'link', message: 'This is a link notification'},
         {type: 'success', message: 'Yayy you did it!'},
         {type: 'warning', message: 'Oee! Watch out!'},

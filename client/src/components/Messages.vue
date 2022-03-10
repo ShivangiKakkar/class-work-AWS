@@ -24,8 +24,6 @@
     </div>
 </template>
 
-
-
 <style scoped>
         .icon {
         font-size: 1.5em;
@@ -36,7 +34,7 @@
     }
     .notification {
         margin: .5rem;
-        width: 100%;
+        width: 95%;
     }
     .tag {
         position: absolute;
