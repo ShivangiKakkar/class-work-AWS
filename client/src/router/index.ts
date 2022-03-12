@@ -15,7 +15,8 @@ const routes: RouteRecordRaw[ ] = [
   { path: '/contact', component: Generic, props: { title: "Contact Page" } },
   { path: '/login', component: Login },
   { path: '/signup', component: Generic, props: { title: "Signup Page" } },
-  { path: '/messages', component: () => import('../pages/Wall.vue') },
+  { path: '/wall', component: () => import('../pages/Wall.vue') },
+  { path: '/hidden', component: Generic, props: { title: "Hidden Page" } },
 ]
 // 3. Create the router instance and pass the `routes` option
 // You can pass in additional options here, but let's
@@ -25,12 +26,19 @@ const router = createRouter({
   // 4. Provide the history implementation to use. We are using the hash history for simplicity here.
   history: createWebHistory(),
   routes,
-  linkActiveClass: 'is-active', // short for `routes: routes`
+  linkActiveClass: 'is-active',     // short for `routes: routes`
 })
 
 //Guards
 router.beforeEach((to, from) => {
-    if(['/messages', '/feed'].includes(to.path)) {
+    if(session.destinationUrl == null) {
+      session.destinationUrl == to.path;
+    }
+    console.log({to});
+    const protectedUrls = ['/messages', '/feed', '/wall', '/hidden'];
+    console.log({protectedUrls});
+    if(protectedUrls.includes(to.path)) {
+        console.log('requires login');
         if(!session.user) {
             return '/login';
         }
