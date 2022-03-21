@@ -3,12 +3,17 @@
 const express = require('express');
 const app = express.Router();
 
+const userModel = require('../models/user');
+
 app
     .get('/', (req, res) => {
-        res.send('You are on the main route for teh USERS COntroller')
+        res.send(user.list);
     })
-    .get('/:id/:name', (req, res) => {
-        res.send(`You are on the ${req.params.name} with ID: ${req.params.id} route in the USERS controller`);
+    .get('/:id', (req, res) => {
+        const user = userModel.get(req.params.id);
+        res.send(user);
+       // res.send(user.list[req.params.id]);
+        
     })
 
 module.exports = app;

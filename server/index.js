@@ -1,14 +1,18 @@
 const express = require('express') //common JS
+
 const usersController = require('./controllers/users');
-const app = express() //pipeline message comes in -> begining of express-> goes through some stuff then gives bac to client
+
+//pipeline message comes in -> begining of express-> goes through some stuff then gives bac to client
+const app = express() 
 const port = 3000
 
 app
+    .use('/', express.static(__dirname + '/public/'))
 
-.get('/', (req, res) => {
-  res.send('Heyy, you are on the homepage')
-})
-.use('/users', usersController) //mouting that controller at ths path
+    .get('/', (req, res) => {
+       es.send('Heyy, you are on the homepage');
+    })
+    .use('/users', usersController) //mouting that controller at thus path
 
 
 app.listen(port, () => {
