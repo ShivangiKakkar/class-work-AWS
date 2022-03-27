@@ -8,11 +8,13 @@ const port = 3000
 
 app
     .use('/', express.static(__dirname + '/public/'))
+    .use(express.json())
+    //.use(express.urlencoded({ extended: true }))
 
-    .get('/', (req, res) => {
-       es.send('Heyy, you are on the homepage');
+    .get('/api/', (req, res) => {
+       res.send('Heyy, you are on the homepage');
     })
-    .use('/users', usersController) //mouting that controller at thus path
+    .use('/api/users', usersController) //mouting that controller at thus path
 
 
 app.listen(port, () => {

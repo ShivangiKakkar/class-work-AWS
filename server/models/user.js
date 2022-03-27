@@ -1,8 +1,5 @@
 
-
-
-
-
+let highestId = 3;
 
 const list = [
 {
@@ -35,7 +32,15 @@ const list = [
 ];
 
 function get(id){
-    return list.find(user => user.id === id);
+    return list.find(user => user.id === parseInt(id));
+}
+
+module.exports = {
+    create(user){
+        user.id = ++highestId;
+        list.push(user);
+        return user;
+    }
 }
 
 module.exports.list = list;
