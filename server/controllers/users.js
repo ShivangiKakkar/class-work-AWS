@@ -4,16 +4,20 @@ const express = require('express');
 const app = express.Router();
 
 const userModel = require('../models/user');
+const CREATED_STATUS = 201;
 
 app
     .get('/', (req, res) => {
-        res.send(user.list);
+        res.send(userModel.list);
     })
     .get('/:id', (req, res) => {
         const user = userModel.get(req.params.id);
         res.send(user);
-       // res.send(user.list[req.params.id]);
         
+    })
+    .post('/', (res,req) => {
+        const user=userModel.create(req.body);
+        res.status(CREATED_STATUS).send(user);
     })
 
 module.exports = app;
