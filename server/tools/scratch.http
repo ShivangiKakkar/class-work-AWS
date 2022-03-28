@@ -3,16 +3,31 @@ http://localhost:3000
 ###
 GET http://localhost:3000/api/users/
 
+###
+GET http://localhost:3000/api/users/1
 
 ###
-# POST http://localhost:3000/api/users
-# Content-Type: application/json
+DELETE  http://localhost:3000/api/users/1
 
-# {
-#     "firstname": "Shivi",
-#     "lastname": "hey",
-#     "handle": "shiv",
-#     "password": "cof",
-#     "email": "shiv@gmail.com",
-#     "pic": "https://randomuser.me/api/portraits/women/21.jpg"
-# }
+###
+POST http://localhost:3000/api/users
+Content-Type: application/json
+
+{
+    "firstname": "Shivi",
+    "lastname": "hey",
+    "handle": "shiv",
+    "password": "cof",
+    "email": "shiv@gmail.com",
+    "pic": "https://randomuser.me/api/portraits/women/21.jpg"
+}
+
+###
+PATCH  http://localhost:3000/api/users/2
+Content-Type: application/json
+
+{
+
+    "lastname": "Putin III"
+   
+}
