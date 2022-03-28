@@ -4,7 +4,7 @@ const usersController = require('./controllers/users');
 
 //pipeline message comes in -> begining of express-> goes through some stuff then gives bac to client
 const app = express() 
-const port = 3000
+const port = process.env.PORT || 3000;
 
 app
     .use('/', express.static(__dirname + '/public/'))
