@@ -44,8 +44,8 @@ function remove(id){
 function update(id, newPost){
     const index = list.findIndex(x => x.id === parseInt(id));
     const oldPost = list[index];
-    newPost = list[index] = {...oldUser, ...newUser };
-    return {...newUser, password: undefined} ;
+    newPost = list[index] = {...oldPost, ...newPost };
+    return {...newPost, user: userModel.get(newPost.owner)} ;
 }
 
 
