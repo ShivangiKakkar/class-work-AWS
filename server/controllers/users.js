@@ -16,9 +16,12 @@ app
         res.send(user);
         
     })
-    .post('/', (req, res) => {
-        const user=userModel.create(req.body);
+    .post('/', (req, res, next) => {
+        userModel.create(req.body)
+        .then(user => {
         res.status(CREATED_STATUS).send(user);
+        }).catch(next);
+        
     })
 
     .delete('/:id', (req, res) => {
