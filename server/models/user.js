@@ -2,6 +2,7 @@
 
 
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 
 let highestId = 3;
@@ -55,6 +56,33 @@ async function update(id, newUser){
     return {...newUser, password: undefined} ;
 }
 
+async function login(email, password){
+    const user = list.find(user => user.email === email);
+    if(!user){
+        throw { statusCode:404, message: 'User not found' };
+    }
+    if(!await bcrypt.compare(password, user.password)){
+        throw { statusCode:401, message: 'Invalid password' };
+    }
+    const data = {...user, password: undefined};
+    const token = jwt.sign(data, process.env.JWT_SECRET);
+
+    return { ...data, token };
+}
+
+function fromToken(token){
+
+    return new Promise((resolve, reject) => {
+        jwt.verify(token, process.env.JWT_SECRET, (err, decoded) =>{
+            if(err){
+                reject(err);
+            }else{
+                resolve(decoded);
+            }
+        });
+    });
+}
+
 //asynchronous programming -> you do it, tell me when you are done. I am not waiting for you to be done. Until then other things keep on going
 //dont return variables, return is a function
 // PROMISE function -> return value -> not return -> because its done done running yet -> you get a promise -> it will come back, saying successful or not.
@@ -73,6 +101,8 @@ module.exports = {
     },
     remove,
     update,
+    login,
+    fromToken,
     get list(){
         return list.map(x=> ({...x, password: undefined}) );
     }
