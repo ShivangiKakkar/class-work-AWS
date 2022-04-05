@@ -50,7 +50,10 @@ function remove(id){
 async function update(id, newUser){
     const index = list.findIndex(user => user.id === parseInt(id));
     const oldUser = list[index];
-    newUser.password = await bcrypt.hash(newUser.password,10);
+    
+    if(newUser.password){
+        await bcrypt.hash(newUser.password,10);
+    }
 
     newUser = list[index] = {...oldUser, ...newUser };
     return {...newUser, password: undefined} ;

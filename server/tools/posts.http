@@ -1,10 +1,12 @@
-http://localhost:3001
 
 ###
 GET http://localhost:3001/api/posts/
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdG5hbWUiOiJWbGFkaW1pciIsImxhc3RuYW1lIjoiUHV0aW4gSUlJIiwiaGFuZGxlIjoicnVzc2lhbl9kaWN0YXRvciIsImVtYWlsIjoic2F2ZUB1a3JhaW5lLmNvbSIsInBpYyI6Imh0dHBzOi8vcmFuZG9tdXNlci5tZS9hcGkvcG9ydHJhaXRzL21lbi84LmpwZyIsImlkIjoyLCJpYXQiOjE2NDkxMDE3MTN9.sheM_XL95MwyKfODtSY-MhiyixsUSkpBqUbRwjWHddw
 
 ###
+GET http://localhost:3001/api/posts/wall
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdG5hbWUiOiJWbGFkaW1pciIsImxhc3RuYW1lIjoiUHV0aW4gSUlJIiwiaGFuZGxlIjoicnVzc2lhbl9kaWN0YXRvciIsImVtYWlsIjoic2F2ZUB1a3JhaW5lLmNvbSIsInBpYyI6Imh0dHBzOi8vcmFuZG9tdXNlci5tZS9hcGkvcG9ydHJhaXRzL21lbi84LmpwZyIsImlkIjoyLCJpYXQiOjE2NDkxMDE3MTN9.sheM_XL95MwyKfODtSY-MhiyixsUSkpBqUbRwjWHddw
+
 GET http://localhost:3001/api/posts/1
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdG5hbWUiOiJWbGFkaW1pciIsImxhc3RuYW1lIjoiUHV0aW4gSUlJIiwiaGFuZGxlIjoicnVzc2lhbl9kaWN0YXRvciIsImVtYWlsIjoic2F2ZUB1a3JhaW5lLmNvbSIsInBpYyI6Imh0dHBzOi8vcmFuZG9tdXNlci5tZS9hcGkvcG9ydHJhaXRzL21lbi84LmpwZyIsImlkIjoyLCJpYXQiOjE2NDkxMDE3MTN9.sheM_XL95MwyKfODtSY-MhiyixsUSkpBqUbRwjWHddw
 
@@ -14,9 +16,9 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdG5hbWUiOiJWb
 
 ###
 POST http://localhost:3001/api/posts
+Content-Type: application/json
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdG5hbWUiOiJWbGFkaW1pciIsImxhc3RuYW1lIjoiUHV0aW4gSUlJIiwiaGFuZGxlIjoicnVzc2lhbl9kaWN0YXRvciIsImVtYWlsIjoic2F2ZUB1a3JhaW5lLmNvbSIsInBpYyI6Imh0dHBzOi8vcmFuZG9tdXNlci5tZS9hcGkvcG9ydHJhaXRzL21lbi84LmpwZyIsImlkIjoyLCJpYXQiOjE2NDkxMDE3MTN9.sheM_XL95MwyKfODtSY-MhiyixsUSkpBqUbRwjWHddw
 
-Content-Type: application/json
     {
         "src": "https://w2.chabad.org/media/images/1187/SvDB11878116.jpg?_i=_n504BC99DD0473598AAE3BCDC5D75568D",
         "caption": "Of Mugs and Family Ties",
@@ -29,11 +31,9 @@ Content-Type: application/json
 
 ###
 PATCH  http://localhost:3001/api/posts/2
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdG5hbWUiOiJWbGFkaW1pciIsImxhc3RuYW1lIjoiUHV0aW4gSUlJIiwiaGFuZGxlIjoicnVzc2lhbl9kaWN0YXRvciIsImVtYWlsIjoic2F2ZUB1a3JhaW5lLmNvbSIsInBpYyI6Imh0dHBzOi8vcmFuZG9tdXNlci5tZS9hcGkvcG9ydHJhaXRzL21lbi84LmpwZyIsImlkIjoyLCJpYXQiOjE2NDkxMDE3MTN9.sheM_XL95MwyKfODtSY-MhiyixsUSkpBqUbRwjWHddw
 Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdG5hbWUiOiJWbGFkaW1pciIsImxhc3RuYW1lIjoiUHV0aW4gSUlJIiwiaGFuZGxlIjoicnVzc2lhbl9kaWN0YXRvciIsImVtYWlsIjoic2F2ZUB1a3JhaW5lLmNvbSIsInBpYyI6Imh0dHBzOi8vcmFuZG9tdXNlci5tZS9hcGkvcG9ydHJhaXRzL21lbi84LmpwZyIsImlkIjoyLCJpYXQiOjE2NDkxMDE3MTN9.sheM_XL95MwyKfODtSY-MhiyixsUSkpBqUbRwjWHddw
 
 {
-
     "owner": 3
-   
 }
