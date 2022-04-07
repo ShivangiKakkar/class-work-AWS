@@ -8,14 +8,18 @@ const userModel = require('../models/user');
 const CREATED_STATUS = 201;
 
 app
-    .get('/', requireAuth, (req, res) => {
-        res.send(userModel.list);
-        //res.send(userModel.list());
+    .get('/', requireAuth, (req, res, next) => {
+        userModel.getList()
+        .then(users => {
+            res.send(users);
+
+        }).catch(next);
     })
-    .get('/:id', (req, res) => {
-        const user = userModel.get(req.params.id);
-        res.send(user);
-        
+    .get('/:id', (req, res, next) => {
+        userModel.get(req.params.id)
+        .then(user =>{
+            res.send(user);
+        }).catch(next);
     })
     .post('/', (req, res, next) => {
         userModel.create(req.body)
@@ -25,10 +29,11 @@ app
 
     })
 
-    .delete('/:id', requireAuth,(req, res) => {
-        const user = userModel.remove(req.params.id);
-
-        res.send({ success: true, errors: [],data: user});
+    .delete('/:id', requireAuth,(req, res,next) => {
+        userModel.remove(req.params.id)
+        .then(user => {
+            res.send({ success: true, errors: [],data: user});
+        }).catch(next);
 
     })
     .patch('/:id', (req, res,next) => {
@@ -42,6 +47,12 @@ app
         userModel.login(req.body.email, req.body.password)
         .then(user =>{
             res.send(user);
+        }).catch(next);
+    })
+    .post('/seed', (req,res, next) => {
+        userModel.seed()
+        .then(x=>{
+            res.send({ success: true, errors: [], data: x.insertedIds });
         }).catch(next);
     })
 
