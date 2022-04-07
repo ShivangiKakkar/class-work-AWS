@@ -3,6 +3,9 @@
 
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { db, isConnected, ObjectId } = require('./mongo');
+
+const collection = db.db("journal").collection("users");
 
 
 let highestId = 3;
@@ -36,26 +39,27 @@ const list = [
     id: 3,
 },
 ];
-function get(id){
-    return {...list.find(user => user.id === parseInt(id)), password: undefined};
+async function get(id){
+    const user = await collection.findOne({_id: new ObjectId(id)});
+    return {...user, password: undefined};
 }
 
-function remove(id){
-    const index = list.findIndex(user => user.id === parseInt(id));
-    const user = list.splice(index,1);
+async function remove(id){
+    const user = await collection.findOneAndDelete({ _id: new ObjectId(id)});
     
-    return {...user[0], password: undefined} ;
+    return {...user.value, password: undefined};
 }
 
 async function update(id, newUser){
     const index = list.findIndex(user => user.id === parseInt(id));
     const oldUser = list[index];
-    
+
     if(newUser.password){
-        await bcrypt.hash(newUser.password,10);
+        newUser.password = await bcrypt.hash(newUser.password,10);
     }
 
     newUser = list[index] = {...oldUser, ...newUser };
+    console.log(newUser);
     return {...newUser, password: undefined} ;
 }
 
@@ -93,7 +97,13 @@ function fromToken(token){
 
 //async await -> put infront of func you are defining -> that func will always return a promise ->async it will convert into promise after that -> after await ->body of then func
 
+function seed(){
+    return collection.insertMany(list);
+}
+
 module.exports = {
+    collection, 
+    seed,
     async create(user){
         user.id = ++highestId;
         user.password = await bcrypt.hash(user.password, +process.env.SALT_ROUNDS);
@@ -106,8 +116,8 @@ module.exports = {
     update,
     login,
     fromToken,
-    get list(){
-        return list.map(x=> ({...x, password: undefined}) );
+    async getList(){
+        return (await collection.find().toArray()).map(x=> ({...x, password: undefined}) );
     }
 }
 //getter -> every part of program 
