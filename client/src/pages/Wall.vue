@@ -1,30 +1,13 @@
 <script setup lang="ts">
-import { ref, reactive, onMounted } from 'vue';
+  import { usePosts } from "../models/posts";
+  import PostView from "../components/PostView.vue";
 
-        const message=ref('Hello Vue!');
-        const currentTab=ref('All');
-        const prompt= ref('Waiting for input...');
-        const notifications = reactive ( [
-          {type: 'primary', message: 'This is primary noti'},
-          {type: 'link', message: 'This is a link notification'},
-          {type: 'success', message: 'Yayy you did it!'},
-          {type: 'warning', message: 'Oee! Watch out!'},
-          {type: 'danger', message: 'I cant believe you just did that!'}
-        ]);
+  const posts = usePosts();
+  posts.fetchPosts();
 
-    
-      function cardClick() {
-        message.value = 'You clicked me!';
-      }
-      function close(index: number) {
-        notifications.splice(index, 1);
-      }
+  const currentTab = "All";
+  const prompt = "What's on your mind?";
 
-    onMounted(() => {
-      setInterval(() => {
-        prompt.value += '.';
-      }, 500);
-    });
 </script>
 
 <template>
@@ -70,30 +53,12 @@ import { ref, reactive, onMounted } from 'vue';
             </div>
 
             <div class="column is-half">
-                <h1 class="title">Bulma Examples</h1>
-                <h2 class="subtitle">Some examples of using Bulma</h2> 
+                
                 <!-- CARD -->
 
-                <div class="card" @click="cardClick">
-                    <div class="class-image">
-                      <figure class="image is-4by3">
-                        <img src="https://images.unsplash.com/photo-1551373802-aec2b9a165aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80" alt="Placeholder image">
-                      </figure>
-                    </div>
-                </div>
+                <post-view v-for="post in posts.list" :key= "post._id" :post="post">
 
-                <div class="media-content">
-                  <p class="title is-4">Shivangi Kakkar</p>
-                  <p class="subtitle is-6">@shivangikakkar</p>
-                </div>
-                <div class="content">
-                  {{ message }} 
-                  <br />
-                  <a>@bulmaio</a>.
-                  <a href="#">#css</a> <a href="#">#responsive</a>
-                  <br>
-                  <time datetime="2016-1-1">03:30 PM - 1 Mar 2022</time>
-                </div>
+                </post-view>
               </div>
               <div class="column is-one-quarter">
                 
