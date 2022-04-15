@@ -8,12 +8,12 @@ const CREATED_STATUS = 201;
 app
     .get('/', (req, res, next) => {
         postModel.getList()
-            .then(posts => res.json({ success: true, errors: [], data: post }))
+            .then(posts => res.json({ success: true, errors: [], data: posts }))
             .catch(next);
     })
     .get('/wall/:handle', (req, res, next) => {
         postModel.getWall(req.params.handle)
-            .then(posts => { res.json({ success: true, errors: [], data: post }) })
+            .then(posts => { res.json({ success: true, errors: [], data: posts }) })
             .catch(next);
     })
     .get('/:id', (req, res, next) => {
@@ -29,7 +29,7 @@ app
 
     .delete('/:id', (req, res, next) => {
         postModel.remove(req.params.id)
-            .then(post => { res.json(post) })
+            .then(post => res.json({ success: true, errors: [], data: post }))
             .catch(next);
 
     })
@@ -38,6 +38,11 @@ app
             .then(post => { res.json({ success: true, errors: [], data: post }) })
             .catch(next);
 
+    })
+    .post('/seed', (req, res, next) => {
+        postModel.seed()
+            .then(post => res.status(CREATED_STATUS).json({ success: true, errors: [], data: post }))
+            .catch(next);
     })
 
 module.exports = app;

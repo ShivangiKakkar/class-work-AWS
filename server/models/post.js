@@ -19,7 +19,7 @@ const list = [
 {
     src: 'https://media-cldnry.s-nbcnews.com/image/upload/t_focal-1120x560,f_auto,q_auto:best/newscms/2022_13/3543963/220328-ukriane-mb-0729.jpg',
     caption: 'Russian forces focus on eastern Ukraine amid rising fears they may seek to split the country in two',
-    owner: 'shivangikakkar',
+    owner: 'vp',
     likes: [],
     comments: [],
     isPublic: true,
@@ -46,6 +46,11 @@ async function get(id){
     }
     return includeUser(post);
 }
+async function getWall(handle){
+    const posts = await collection.find({ owner: handle }).toArray();
+
+    return Promise.all( posts.map(x=> includeUser(x) ) );
+}
 
 async function remove(id){
     const post = await collection.findOneAndDelete({ _id: new ObjectId(id)});
@@ -60,6 +65,10 @@ async function update(id, newPost){
         { returnDocument: 'after' });
     return includeUser(newPost);
 }
+function seed(){
+    return collection.insertMany(list);
+}
+
 
 module.exports = {
     async create(post){
@@ -78,7 +87,9 @@ module.exports = {
         return Promise.all( posts.map(x => includeUser(x)));
         
         //promise all means you want all of these promises to happen
-    }
+    },
+    getWall,
+    seed,
 }
 //getter -> every part of program 
 

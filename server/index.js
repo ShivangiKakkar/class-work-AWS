@@ -15,6 +15,12 @@ const port = process.env.PORT || 3000;
 
 app
     .use('/', express.static(__dirname + '/public/'))
+
+    .use(function(req, res, next){
+      res.header("Access-Control-Allow-Origin", "*"); //list server instead of * for firefox
+      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+      next();
+    })
     .use(express.json())
     //.use(express.urlencoded({ extended: true }))
     .use((req,res, next) => {
@@ -37,7 +43,7 @@ app
        res.send('You are at the root of the API. For the best class ever - ' + process.env.BEST_CLASS_EVER);
     })
     .use('/api/users', usersController)
-    .use('/api/posts', requireAuth, postsController) //mouting that controller at thus path
+    .use('/api/posts', /*requireAuth,*/ postsController) //mouting that controller at thus path
 
     //error handling
     .use((err, req, res, next) => {
