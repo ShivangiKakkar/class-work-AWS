@@ -20,7 +20,7 @@ const { post } = defineProps<{post: Post}>();
                         </div>
 
                 <div class="media-content">
-                  <p class="title is-4">{{post.user.firstName}} {{post.user.lastName}}</p>
+                  <p class="title is-4">{{post.user.firstname}} {{post.user.lastname}}</p>
                   <p class="subtitle is-6">@{{post.user.handle}}</p>
                 </div>
                 </div>
