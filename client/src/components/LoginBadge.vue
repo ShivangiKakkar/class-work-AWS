@@ -1,6 +1,7 @@
 
 <script setup lang="ts">
-    import session, { Logout } from '../models/session';
+    import { useSession } from '../models/session';
+    const session = useSession();
 </script>
 <template>
     <div class="buttons" v-if="!session.user">
@@ -24,7 +25,7 @@
 
         </div>
 
-        <a class="button is-primary" @click="Logout()">
+        <a class="button is-primary" @click="session.Logout()">
             <strong>Log Out</strong>
         </a>
 

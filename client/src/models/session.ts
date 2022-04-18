@@ -1,43 +1,42 @@
-import { reactive } from "vue";
+
 import router from "../router";
-//import { User, list } from "../models/user";
 import * as users from "../models/user"; 
 import { useMessages } from "./messages";
+import { api } from "./myFetch";
+import { defineStore } from "pinia";
 
 
-const session = reactive({
-    user: null as users.User | null,
-    destinationUrl: null as string | null,
-})
-
-export async function Login(handle: string, password: string) {
-    const user = users.list.find(u => u.handle === handle);
-    const messages = useMessages();
-    try {
-        if(!user){
-            throw { message: "User not found!" };
-        } if(user.password !== password){
-            throw { message: "Incorrect Password" };
+export const useSession = defineStore('session', {
+    state: () => ({
+        user: null as users.User | null,
+        destinationUrl: null as string | null,
+    }),
+    actions: {
+        async Login(email: string, password: string) {
+            const messages = useMessages();
+            try {
+                const user = await api("users/login", { email, password });
+                if(user){
+                    messages.notifications.push({
+                        type: "success",
+                        message: `Welcome back ${user.firstname}`,
+                    });
+                }
+                this.user = user;
+                router.push(this.destinationUrl ?? '/wall'); //default ??
+            } catch (error: any){
+                messages.notifications.push({
+                    type: "danger",
+                    message: error.message,
+                });
+                console.table(messages.notifications)
+            }
+        
+           
+        },
+        Logout(){
+            this.user = null;
+            router.push('/login');
         }
-        messages.notifications.push({
-            type: "success",
-            message: `Welcome back ${user.firstname}`,
-        });
-        session.user = user;
-        router.push(session.destinationUrl ?? '/wall'); //default ??
-    } catch (error: any){
-        messages.notifications.push({
-            type: "danger",
-            message: error.message,
-        });
-        console.table(messages.notifications)
-    }
-
-   
-}
-export function Logout(){
-    session.user = null;
-    router.push('/login');
-}
-
-export default session;
+    },
+})

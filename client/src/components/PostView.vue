@@ -10,7 +10,7 @@ const { post } = defineProps<{post: Post}>();
                         <img :src="post.src" alt="Placeholder image">
                       </figure>
                     </div>
-                        <button class="delete"></button>
+                        <!-- <button class="delete"></button> -->
                     <div class="card-content">
                         <div class="media">
                         <div class="media-left">
