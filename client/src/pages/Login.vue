@@ -1,12 +1,10 @@
-
 <script setup lang="ts">
-    import { ref } from vue;
+    import { ref } from 'vue';
     import { useSession } from '../models/session';
     const session = useSession();
 
     const email = ref('');
     const password = ref('');
-    
 
     function login() 
     {
