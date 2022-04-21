@@ -1,16 +1,22 @@
 import { defineStore } from 'pinia'
-import { api } from './myFetch';
+import { useSession } from './session';
 import { User } from './user';
 
 export const usePosts = defineStore('posts', {
 
   state: () => ({
     list: [] as Post[],
+    session: useSession(),
   }),
   actions: {
-    async fetchPosts() {
-      const posts = await api('posts');
-      this.list = posts.data;
+    async fetchPosts(handle: string = '') {
+      const posts = await this.session.api('posts/wall/' + handle); //need to use a session api here
+      this.list = posts;
+    },
+
+    async fetchAllPosts() {
+      const posts = await this.session.api('posts'); //need to use a session api here
+      this.list = posts;
     }
   }
 })

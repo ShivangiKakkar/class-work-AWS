@@ -11,11 +11,21 @@ app
             .then(posts => res.json({ success: true, errors: [], data: posts }))
             .catch(next);
     })
+    .get('/wall', (req, res, next) => {
+        postModel.getWall(req.user.handle)
+            .then(posts => { res.json({ success: true, errors: [], data: posts }) })
+            .catch(next);
+    })
     .get('/wall/:handle', (req, res, next) => {
+        //if user is not friends wiht the requested handle, then return an error
+        // if(!req.user.friends.includes(req.params.handle)) {
+        //     return res.status(403).json({ success: false, errors: ['You are not friends with this user'] });
+        // }
         postModel.getWall(req.params.handle)
             .then(posts => { res.json({ success: true, errors: [], data: posts }) })
             .catch(next);
     })
+    
     .get('/:id', (req, res, next) => {
         postModel.get(req.params.id)
             .then(post => { res.json({ success: true, errors: [], data: post }) })
