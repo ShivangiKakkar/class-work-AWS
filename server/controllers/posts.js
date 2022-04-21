@@ -32,6 +32,7 @@ app
             .catch(next);
     })
     .post('/', (req, res, next) => {
+        req.body.owner = req.user.handle;
         postModel.create(req.body)
             .then(post => { res.status(CREATED_STATUS).json({ success: true, errors: [], data: post }) })
             .catch(next);

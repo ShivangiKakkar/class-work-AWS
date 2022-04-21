@@ -1,13 +1,28 @@
 <script setup lang="ts">
-  import { usePosts } from "../models/posts";
+  import { reactive } from 'vue';
+  import { Post, usePosts } from "../models/posts";
   import { useRoute } from "vue-router";
   import PostView from "../components/PostView.vue";
+  import PostEdit from "../components/PostEdit.vue";
+  import { useSession } from "../models/session";
 
   const route = useRoute();
 
   const posts = usePosts();
   posts.fetchPosts(route.params.handle as string);
 
+  const session = useSession();
+
+  const newPost = reactive<Post>(
+    { 
+      src: "", 
+      caption: "", 
+      owner: "", 
+      comments: [], 
+      likes:[], 
+      isPublic: false, 
+      user: session.user
+    } );
   const currentTab = "All";
   const prompt = "What's on your mind?";
 
@@ -58,13 +73,13 @@
             <div class="column is-half">
                 
                 <!-- CARD -->
-
+                <post-edit :post="newPost" @save="posts.createPost(newPost)"></post-edit>
                 <post-view v-for="post in posts.list" :key= "post._id" :post="post">
-
                 </post-view>
               </div>
               <div class="column is-one-quarter">
-                
+                <post-view :post="newPost">
+                </post-view>
                 <article class="panel is-primary">
                     <p class="panel-heading">
                       Primary

@@ -17,16 +17,21 @@ export const usePosts = defineStore('posts', {
     async fetchAllPosts() {
       const posts = await this.session.api('posts'); //need to use a session api here
       this.list = posts;
+    },
+
+    async createPost(post: Post) {
+      const newPost = await this.session.api('posts', post);
+      this.list.push(newPost);
     }
   }
 })
 
 export interface Post {
-  _id: string;
+  _id?: string;
   src: string;
   caption: string;
   owner: string;
-  user: User;
+  user?: User;
   likes: string[];
   comments: any[];
   isPublic: boolean;
