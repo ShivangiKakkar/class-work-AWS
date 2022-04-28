@@ -2,7 +2,7 @@ http://localhost:3001
 
 ###
 GET http://localhost:3001/api/users/
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdG5hbWUiOiJWbGFkaW1pciIsImxhc3RuYW1lIjoiUHV0aW4gSUlJIiwiaGFuZGxlIjoicnVzc2lhbl9kaWN0YXRvciIsImVtYWlsIjoic2F2ZUB1a3JhaW5lLmNvbSIsInBpYyI6Imh0dHBzOi8vcmFuZG9tdXNlci5tZS9hcGkvcG9ydHJhaXRzL21lbi84LmpwZyIsImlkIjoyLCJpYXQiOjE2NDkxMDE3MTN9.sheM_XL95MwyKfODtSY-MhiyixsUSkpBqUbRwjWHddw
+Authorization: bearer {{ login.response.body.data.token }}
 
 ###
 GET http://localhost:3001/api/users/handle/shivangikakkar
@@ -41,6 +41,7 @@ Content-Type: application/json
 }
 
 ###
+# @name login
 POST  http://localhost:3001/api/users/login
 Content-Type: application/json
 
@@ -53,3 +54,9 @@ Content-Type: application/json
 
 ###
 POST  http://localhost:3001/api/users/seed
+
+###
+https://api.openweathermap.org/data/2.5/weather?q=London,uk&appid={{$dotenv OPENWEATHER_KEY}}
+
+###
+https://api.coinbase.com/v2/exchange-rates

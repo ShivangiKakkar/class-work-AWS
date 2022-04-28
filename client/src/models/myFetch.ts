@@ -14,8 +14,6 @@ export function api(url: string, body?: any, method?: string, headers?: HeadersI
                 body: JSON.stringify(body) // body data type must match "Content-Type" header
 };
     }
-
-
     return fetch(API_URL + url, options).then(res => res.json());
 }
 //fetch like axios return promises
