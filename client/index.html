@@ -9,5 +9,11 @@
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
+    <script async
+    src="https://maps.googleapis.com/maps/api/js?key=9783c8f2be7a1d806aff6b1d9b738ea6&libraries=places&callback=initMap">
+    </script>
+    <script>
+      const mapIsReady = new Promise(resolve => window.initMap = () => resolve());
+    </script>
   </body>
 </html>
