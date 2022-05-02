@@ -1,5 +1,6 @@
 <script lang="ts">
     declare var mapIsReady: Promise<void>; 
+    //declare var google: any;
 </script>
 <script setup lang="ts"> 
     import { ref,reactive } from 'vue';

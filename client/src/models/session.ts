@@ -4,7 +4,9 @@ import * as users from "../models/user";
 import { useMessages } from "./messages";
 import { api } from "./myFetch";
 import { defineStore } from "pinia";
+import { loadScript } from "./utils";
 
+// declare var google: any; -----we have installed that
 
 export const useSession = defineStore('session', {
     state: () => ({
@@ -12,6 +14,19 @@ export const useSession = defineStore('session', {
         destinationUrl: null as string | null,
     }),
     actions: {
+
+        async GoogleLogin(){
+            await loadScript('https://accounts.google.com/gsi/client','google-signin');
+            google.accounts.id.initialize({
+                client_id: 'YOUR_GOOGLE_CLIENT_ID',
+                callback: (x: any) => {
+                    console.log(x);
+                }
+                // WRONG WAY
+              });
+              google.accounts.id.prompt();
+
+        },
         async Login(email: string, password: string) {
             const messages = useMessages();
             try {

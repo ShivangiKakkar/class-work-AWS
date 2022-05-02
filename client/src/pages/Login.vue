@@ -42,6 +42,9 @@
                                 <button class="button is-success">
                                 Login
                                 </button>
+                                <button class="button is-success" @click.prevent="session.GoogleLogin()">
+                                Login by google
+                                </button>
                             </p>
                             </div>
                             </form>
