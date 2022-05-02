@@ -11,3 +11,14 @@ export function loadScript(url: string, id: string): Promise<void> {
     document.head.appendChild(script);
   });
 }
+
+// decrypt 
+
+export function decodeJWT(token: string): any {
+  const base64Url = token.split('.')[1];
+  const base64 = base64Url.replace('-', '+').replace('_', '/');
+  return JSON.parse(window.atob(base64));
+}
+
+// takes signature and takes it away
+// it uses second half
