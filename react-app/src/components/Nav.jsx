@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 //import { RouterLink } from 'react-router';
 //import LoginBadge from './LoginBadge.vue';
 //import Messages from './Messages.vue';
 
-const NavLink = (props) => <a {...props} >{props.children}</a>;
+// const NavLink = (props) => <a {...props} >{props.children}</a>;
 const LoginBadge = () => <></>;
 const Messages  = () => <></>;
 
@@ -20,7 +21,7 @@ function Nav() {
           <a className="navbar-item" href="https://bulma.io">
             <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"/>
           </a>
-                     click="isOpen = !isOpen"
+                     {/* click="isOpen = !isOpen" */}
           <a role="button" className={`navbar-burger ${isOpen ? 'is-active' : ''}`} onClick={()=> setIsOpen(!isOpen) } aria-label="menu" aria-expanded="false">
             {/* {{}   ->   Javascript -> script } AND : ->>> literals*/}
             <span aria-hidden="true"></span>
