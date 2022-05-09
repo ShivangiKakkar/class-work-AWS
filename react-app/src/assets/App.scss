@@ -13,3 +13,27 @@
     transform: rotate(360deg);
   }
 }
+
+
+.notification-component{
+.icon {
+    font-size: 1.5em;
+}
+.navbar-dropdown {
+    width: max-content;
+    max-width: 300px;
+}
+.notification {
+    margin: .5rem;
+    width: 95%;
+}
+.tag {
+    position: absolute;
+    font-size: .8em;
+    top: .5em;
+    right: 2.5em;
+    height: 1.5em;
+    padding: .5em;
+    border-radius: 50%;
+}
+}
